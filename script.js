@@ -25,7 +25,8 @@ const displayBook = function (book) {
   const bookNumPages = document.createElement("h3");
   const bookReleaseYear = document.createElement("h3");
   const bookHasRead = document.createElement("h3");
-  const deleteBookBtn = document.createElement("button");
+  //   const deleteBookBtn = document.createElement("button");
+  const deleteBookIcon = document.createElement("span");
 
   bookCard.dataset.index = book.index;
   bookCard.classList.add("book-card");
@@ -34,7 +35,9 @@ const displayBook = function (book) {
   bookNumPages.classList.add("book-page-count");
   bookHasRead.classList.add("book-read-status");
   bookReleaseYear.classList.add("book-release-year");
-  deleteBookBtn.classList.add("delete-book-btn");
+  //   deleteBookBtn.classList.add("delete-book-btn");
+  deleteBookIcon.classList.add("material-symbols-outlined");
+  deleteBookIcon.classList.add("delete-book-btn");
 
   bookTitle.textContent = book.title;
   bookAuthor.textContent = `Author: ${book.author}`;
@@ -42,7 +45,8 @@ const displayBook = function (book) {
   bookNumPages.textContent = `Page Count: ${book.numPages}`;
   bookReleaseYear.textContent = `Release Year: ${book.releaseYear}`;
   bookHasRead.textContent = book.hasRead === true ? "Read" : "Not read";
-  deleteBookBtn.textContent = "Delete";
+  deleteBookIcon.textContent = "delete";
+  //   deleteBookBtn.textContent = "Delete";
 
   library.appendChild(bookCard);
   bookCard.append(bookTitle);
@@ -50,9 +54,10 @@ const displayBook = function (book) {
   bookCard.append(bookReleaseYear);
   bookCard.append(bookNumPages);
   bookCard.append(bookHasRead);
-  bookCard.append(deleteBookBtn);
+  bookCard.append(deleteBookIcon);
+  //   deleteBookBtn.appendChild(deleteBookIcon);
 
-  deleteBookBtn.addEventListener("click", function (e) {
+  deleteBookIcon.addEventListener("click", function (e) {
     e.preventDefault();
     deleteBook(book.index);
   });

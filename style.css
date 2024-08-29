@@ -11,7 +11,7 @@ body {
   height: 100vh;
   width: auto;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 9fr 1fr;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .footer {
-  grid-area: 3/1/4/4;
+  grid-area: 3/1/4/3;
   background-color: rgba(202, 255, 247, 0.5);
 }
 
@@ -63,7 +63,10 @@ body {
 }
 
 .delete-book-btn {
-  width: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
   margin-top: auto;
   align-self: flex-end;
 }
