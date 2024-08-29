@@ -69,10 +69,14 @@ const displayLibrary = function () {
 
 const deleteBook = function (index) {
   myLibrary.splice(index, 1);
-  displayLibrary();
+  const bookSelected = document.querySelector(
+    `.book-card[data-index="${index}"]`
+  );
+  library.removeChild(bookSelected);
 };
 
 addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
 addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
+addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
 
 displayLibrary();

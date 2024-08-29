@@ -12,7 +12,7 @@ body {
   width: auto;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: 1fr 9fr 1fr;
 }
 
 .header {
@@ -31,6 +31,11 @@ body {
   grid-area: 2/2/3/3;
   display: flex;
   justify-content: center;
+}
+
+.footer {
+  grid-area: 3/1/4/4;
+  background-color: rgba(202, 255, 247, 0.5);
 }
 
 .header h1 {
