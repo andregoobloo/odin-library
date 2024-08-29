@@ -6,3 +6,59 @@
 body {
   box-sizing: border-box;
 }
+
+.container {
+  height: 100vh;
+  width: auto;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 9fr;
+}
+
+.header {
+  background-color: rgb(202, 202, 202);
+  grid-area: 1/2/2/3;
+  align-content: center;
+}
+
+.sidebar {
+  background-color: rgb(244, 215, 220);
+  grid-area: 1/1/3/2;
+}
+
+.library {
+  background-color: rgb(249, 240, 224);
+  grid-area: 2/2/3/3;
+  display: flex;
+  justify-content: center;
+}
+
+.header h1 {
+  text-align: center;
+}
+
+.book-card {
+  background-color: white;
+  border: 1px solid black;
+  height: 200px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  text-align: center;
+}
+
+.book-author,
+.book-release-year,
+.book-page-count,
+.book-read-status {
+  font-size: 0.8rem;
+}
+
+.delete-book-btn {
+  width: 50%;
+  margin-top: auto;
+  align-self: flex-end;
+}
