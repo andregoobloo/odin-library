@@ -93,6 +93,7 @@ addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
 
 displayLibrary();
 
+// Modal Dialog
 const showButton = document.getElementById("new-book-dialog");
 const newBookDialog = document.getElementById("new-book-form-dialog");
 const closeDialog = document.querySelector(".close-dialog");

@@ -1,3 +1,9 @@
+:root {
+  --main-color: #64748b;
+  --secondary-color: #cbd5e1;
+  --third-color: #475569;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -5,37 +11,23 @@
 
 body {
   box-sizing: border-box;
+  background-color: var(--main-color);
 }
 
 .container {
   height: 100vh;
   width: auto;
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 9fr 1fr;
 }
 
 .header {
-  background-color: rgb(202, 202, 202);
-  grid-area: 1/2/2/3;
-  align-content: center;
-}
-
-.sidebar {
-  background-color: rgb(244, 215, 220);
-  grid-area: 1/1/3/2;
+  text-align: center;
+  background-color: var(--secondary-color);
 }
 
 .library {
-  background-color: rgb(249, 240, 224);
-  grid-area: 2/2/3/3;
   display: flex;
   justify-content: center;
-}
-
-.footer {
-  grid-area: 3/1/4/3;
-  background-color: rgba(202, 255, 247, 0.5);
 }
 
 .header h1 {
@@ -71,13 +63,20 @@ body {
   align-self: flex-end;
 }
 
-.new-book-form {
-  display: flex;
-  flex-direction: column;
+#new-book-form-dialog {
+  margin: auto;
+  width: fit-content;
+  background-color: var(--secondary-color);
 }
 
-#new-book-form-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.new-book-form {
+  font-size: 1.5rem;
+  display: grid;
+  gap: 20px;
+  padding: 3em;
+}
+
+.close-dialog {
+  cursor: pointer;
+  padding: 10px;
 }
