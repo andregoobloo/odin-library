@@ -11,22 +11,41 @@
 
 body {
   box-sizing: border-box;
-  background-color: var(--main-color);
 }
 
 .container {
   height: 100vh;
   width: auto;
   display: grid;
+  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .header {
   text-align: center;
   background-color: var(--secondary-color);
+  grid-area: 1/1/2/3;
 }
 
-.library {
+.library-read-div {
+  background-color: var(--main-color);
+  grid-area: 2/2/3/3;
+}
+
+.library-read {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.library-not-read-div {
+  background-color: var(--third-color);
+  grid-area: 2/1/3/2;
+}
+
+.library-not-read {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -79,4 +98,9 @@ body {
 .close-dialog {
   cursor: pointer;
   padding: 10px;
+}
+
+.read-title {
+  color: white;
+  text-align: center;
 }

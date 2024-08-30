@@ -16,7 +16,8 @@ function addBookToLibrary(title, author, numPages, releaseYear, hasRead) {
   myLibrary.push(book);
 }
 
-const library = document.querySelector(".library");
+const libraryRead = document.querySelector(".library-read");
+const libraryNotRead = document.querySelector(".library-not-read");
 
 const displayBook = function (book) {
   // Book card
@@ -55,13 +56,21 @@ const displayBook = function (book) {
   deleteBookBtn.textContent = "delete";
 
   // Appending
-  library.appendChild(bookCard);
-  bookCard.append(bookTitle);
-  bookCard.append(bookAuthor);
-  bookCard.append(bookReleaseYear);
-  bookCard.append(bookNumPages);
-  bookCard.append(bookHasRead);
-  bookCard.append(deleteBookBtn);
+  const appendBookCard = function () {
+    bookCard.append(bookTitle);
+    bookCard.append(bookAuthor);
+    bookCard.append(bookReleaseYear);
+    bookCard.append(bookNumPages);
+    bookCard.append(bookHasRead);
+    bookCard.append(deleteBookBtn);
+  };
+  if (book.hasRead === true) {
+    libraryRead.appendChild(bookCard);
+    appendBookCard();
+  } else if (book.hasRead === false) {
+    libraryNotRead.appendChild(bookCard);
+    appendBookCard();
+  }
 
   // Delete button
   deleteBookBtn.addEventListener("click", function (e) {
@@ -72,8 +81,11 @@ const displayBook = function (book) {
 
 const displayLibrary = function () {
   // Clears display
-  while (library.firstChild) {
-    library.removeChild(library.firstChild);
+  while (libraryRead.firstChild) {
+    libraryRead.removeChild(libraryRead.firstChild);
+  }
+  while (libraryNotRead.firstChild) {
+    libraryNotRead.removeChild(libraryNotRead.firstChild);
   }
   // Adds books to display
   myLibrary.forEach((book) => displayBook(book));
@@ -84,7 +96,11 @@ const deleteBook = function (index) {
   const bookSelected = document.querySelector(
     `.book-card[data-index="${index}"]`
   );
-  library.removeChild(bookSelected);
+  if (libraryRead.contains(bookSelected)) {
+    libraryRead.removeChild(bookSelected);
+  } else if (libraryNotRead.contains(bookSelected)) {
+    libraryNotRead.removeChild(bookSelected);
+  }
 };
 
 addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
