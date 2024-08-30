@@ -70,3 +70,8 @@ body {
   margin-top: auto;
   align-self: flex-end;
 }
+
+.new-book {
+  display: flex;
+  flex-direction: column;
+}

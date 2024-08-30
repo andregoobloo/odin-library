@@ -19,45 +19,52 @@ function addBookToLibrary(title, author, numPages, releaseYear, hasRead) {
 const library = document.querySelector(".library");
 
 const displayBook = function (book) {
+  // Book card
   const bookCard = document.createElement("div");
-  const bookTitle = document.createElement("h1");
-  const bookAuthor = document.createElement("h3");
-  const bookNumPages = document.createElement("h3");
-  const bookReleaseYear = document.createElement("h3");
-  const bookHasRead = document.createElement("h3");
-  //   const deleteBookBtn = document.createElement("button");
-  const deleteBookIcon = document.createElement("span");
-
   bookCard.dataset.index = book.index;
   bookCard.classList.add("book-card");
+
+  // Book title
+  const bookTitle = document.createElement("h1");
   bookTitle.classList.add("book-title");
-  bookAuthor.classList.add("book-author");
-  bookNumPages.classList.add("book-page-count");
-  bookHasRead.classList.add("book-read-status");
-  bookReleaseYear.classList.add("book-release-year");
-  //   deleteBookBtn.classList.add("delete-book-btn");
-  deleteBookIcon.classList.add("material-symbols-outlined");
-  deleteBookIcon.classList.add("delete-book-btn");
-
   bookTitle.textContent = book.title;
-  bookAuthor.textContent = `Author: ${book.author}`;
-  bookReleaseYear.textContent = `Release Year: ${book.releaseYear}`;
-  bookNumPages.textContent = `Page Count: ${book.numPages}`;
-  bookReleaseYear.textContent = `Release Year: ${book.releaseYear}`;
-  bookHasRead.textContent = book.hasRead === true ? "Read" : "Not read";
-  deleteBookIcon.textContent = "delete";
-  //   deleteBookBtn.textContent = "Delete";
 
+  // Book author
+  const bookAuthor = document.createElement("h3");
+  bookAuthor.classList.add("book-author");
+  bookAuthor.textContent = `Author: ${book.author}`;
+
+  // Book page count
+  const bookNumPages = document.createElement("h3");
+  bookNumPages.classList.add("book-page-count");
+  bookNumPages.textContent = `Page Count: ${book.numPages}`;
+
+  // Book release year
+  const bookReleaseYear = document.createElement("h3");
+  bookReleaseYear.classList.add("book-release-year");
+  bookReleaseYear.textContent = `Release Year: ${book.releaseYear}`;
+
+  // Book was read or not
+  const bookHasRead = document.createElement("h3");
+  bookHasRead.classList.add("book-read-status");
+  bookHasRead.textContent = book.hasRead === true ? "Read" : "Not read";
+
+  // Delete book
+  const deleteBookBtn = document.createElement("span");
+  deleteBookBtn.classList.add("material-symbols-outlined", "delete-book-btn");
+  deleteBookBtn.textContent = "delete";
+
+  // Appending
   library.appendChild(bookCard);
   bookCard.append(bookTitle);
   bookCard.append(bookAuthor);
   bookCard.append(bookReleaseYear);
   bookCard.append(bookNumPages);
   bookCard.append(bookHasRead);
-  bookCard.append(deleteBookIcon);
-  //   deleteBookBtn.appendChild(deleteBookIcon);
+  bookCard.append(deleteBookBtn);
 
-  deleteBookIcon.addEventListener("click", function (e) {
+  // Delete button
+  deleteBookBtn.addEventListener("click", function (e) {
     e.preventDefault();
     deleteBook(book.index);
   });
@@ -85,3 +92,23 @@ addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
 addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
 
 displayLibrary();
+
+const newBookForm = document.querySelector(".new-book");
+
+newBookForm.onsubmit = (e) => {
+  e.preventDefault();
+  const newBookTitle = document.getElementById("title").value;
+  const newBookAuthor = document.getElementById("author").value;
+  const newBookReleaseYear = document.getElementById("release-year").value;
+  const newBookPageCount = document.getElementById("page-count").value;
+  const newBookReadStatus = document.getElementById("read").checked;
+
+  addBookToLibrary(
+    newBookTitle,
+    newBookAuthor,
+    newBookReleaseYear,
+    newBookPageCount,
+    newBookReadStatus
+  );
+  displayLibrary();
+};
