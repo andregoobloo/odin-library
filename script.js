@@ -93,7 +93,16 @@ addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
 
 displayLibrary();
 
-const newBookForm = document.querySelector(".new-book");
+const showButton = document.getElementById("new-book-dialog");
+const newBookDialog = document.getElementById("new-book-form-dialog");
+const closeDialog = document.querySelector(".close-dialog");
+
+showButton.addEventListener("click", () => newBookDialog.showModal());
+
+closeDialog.addEventListener("click", () => newBookDialog.close());
+
+// Add new book to collection
+const newBookForm = document.querySelector(".new-book-form");
 
 newBookForm.onsubmit = (e) => {
   e.preventDefault();
@@ -110,5 +119,6 @@ newBookForm.onsubmit = (e) => {
     newBookPageCount,
     newBookReadStatus
   );
+  newBookDialog.close();
   displayLibrary();
 };
