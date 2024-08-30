@@ -104,3 +104,7 @@ body {
   color: white;
   text-align: center;
 }
+
+.change-read-status {
+  cursor: pointer;
+}

@@ -33,17 +33,17 @@ const displayBook = function (book) {
   // Book author
   const bookAuthor = document.createElement("h3");
   bookAuthor.classList.add("book-author");
-  bookAuthor.textContent = `Author: ${book.author}`;
+  bookAuthor.textContent = `By ${book.author}`;
 
   // Book page count
   const bookNumPages = document.createElement("h3");
   bookNumPages.classList.add("book-page-count");
-  bookNumPages.textContent = `Page Count: ${book.numPages}`;
+  bookNumPages.textContent = `${book.numPages} pages`;
 
   // Book release year
   const bookReleaseYear = document.createElement("h3");
   bookReleaseYear.classList.add("book-release-year");
-  bookReleaseYear.textContent = `Release Year: ${book.releaseYear}`;
+  bookReleaseYear.textContent = `Published in ${book.releaseYear}`;
 
   // Book was read or not
   const bookHasRead = document.createElement("h3");
@@ -55,6 +55,14 @@ const displayBook = function (book) {
   deleteBookBtn.classList.add("material-symbols-outlined", "delete-book-btn");
   deleteBookBtn.textContent = "delete";
 
+  // Change read status
+  const changeReadStatusBtn = document.createElement("span");
+  changeReadStatusBtn.classList.add(
+    "material-symbols-outlined",
+    "change-read-status"
+  );
+  changeReadStatusBtn.textContent = "edit_note";
+
   // Appending
   const appendBookCard = function () {
     bookCard.append(bookTitle);
@@ -63,6 +71,7 @@ const displayBook = function (book) {
     bookCard.append(bookNumPages);
     bookCard.append(bookHasRead);
     bookCard.append(deleteBookBtn);
+    bookHasRead.append(changeReadStatusBtn);
   };
   if (book.hasRead === true) {
     libraryRead.appendChild(bookCard);
@@ -76,6 +85,16 @@ const displayBook = function (book) {
   deleteBookBtn.addEventListener("click", function (e) {
     e.preventDefault();
     deleteBook(book.index);
+  });
+
+  changeReadStatusBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (book.hasRead === true) {
+      book.hasRead = false;
+    } else {
+      book.hasRead = true;
+    }
+    displayLibrary();
   });
 };
 
