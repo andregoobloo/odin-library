@@ -36,6 +36,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 2em;
 }
 
 .library-not-read-div {
@@ -54,12 +55,16 @@ body {
 }
 
 .book-card {
-  background-color: white;
+  background-color: var(--secondary-color);
   border: 1px solid black;
-  height: 200px;
-  width: 150px;
+  width: 250px;
+  height: 300px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  box-shadow: 10px 0 5px -2px var(--third-color);
 }
 
 .book-title {
@@ -70,7 +75,7 @@ body {
 .book-release-year,
 .book-page-count,
 .book-read-status {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
 }
 
 .delete-book-btn {
@@ -80,6 +85,9 @@ body {
   cursor: pointer;
   margin-top: auto;
   align-self: flex-end;
+}
+.delete-book-btn:hover {
+  color: rgb(205, 6, 6);
 }
 
 #new-book-form-dialog {
@@ -100,11 +108,16 @@ body {
   padding: 10px;
 }
 
-.read-title {
+.read-title,
+.unread-title {
   color: white;
   text-align: center;
 }
 
 .change-read-status {
   cursor: pointer;
+}
+
+.change-read-status:hover {
+  color: var(--third-color);
 }

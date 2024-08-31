@@ -18,6 +18,17 @@ function addBookToLibrary(title, author, numPages, releaseYear, hasRead) {
 
 const libraryRead = document.querySelector(".library-read");
 const libraryNotRead = document.querySelector(".library-not-read");
+const libraryReadTitle = document.querySelector(".read-title");
+const libraryNotReadTitle = document.querySelector(".unread-title");
+
+const displayTitles = function () {
+  libraryReadTitle.textContent = `${
+    myLibrary.filter((book) => book.hasRead === true).length
+  } Books Read`;
+  libraryNotReadTitle.textContent = `${
+    myLibrary.filter((book) => book.hasRead === false).length
+  } Books Not Read`;
+};
 
 const displayBook = function (book) {
   // Book card
@@ -48,7 +59,6 @@ const displayBook = function (book) {
   // Book was read or not
   const bookHasRead = document.createElement("h3");
   bookHasRead.classList.add("book-read-status");
-  bookHasRead.textContent = book.hasRead === true ? "Read" : "Not read";
 
   // Delete book
   const deleteBookBtn = document.createElement("span");
@@ -56,12 +66,10 @@ const displayBook = function (book) {
   deleteBookBtn.textContent = "delete";
 
   // Change read status
-  const changeReadStatusBtn = document.createElement("span");
-  changeReadStatusBtn.classList.add(
-    "material-symbols-outlined",
-    "change-read-status"
-  );
-  changeReadStatusBtn.textContent = "edit_note";
+  const changeReadStatusBtn = document.createElement("button");
+  changeReadStatusBtn.classList.add("change-read-status");
+  changeReadStatusBtn.textContent =
+    book.hasRead === true ? "Add to unread" : "Add to read";
 
   // Appending
   const appendBookCard = function () {
@@ -87,6 +95,7 @@ const displayBook = function (book) {
     deleteBook(book.index);
   });
 
+  // Change read value button
   changeReadStatusBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (book.hasRead === true) {
@@ -108,6 +117,9 @@ const displayLibrary = function () {
   }
   // Adds books to display
   myLibrary.forEach((book) => displayBook(book));
+
+  // Total book count per section
+  displayTitles();
 };
 
 const deleteBook = function (index) {
@@ -120,8 +132,21 @@ const deleteBook = function (index) {
   } else if (libraryNotRead.contains(bookSelected)) {
     libraryNotRead.removeChild(bookSelected);
   }
+  displayTitles();
 };
 
+addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
+addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
+addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
+addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
+addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
+addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
+addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
+addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
+addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
+addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
+addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
+addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
 addBookToLibrary("Kan", "Neena Geena", 323, 1908, false);
 addBookToLibrary("Petper Peep", "Sawyaer Timbo", 500, 1998, true);
 addBookToLibrary("Hunger Games", "Somebody", 350, 2010, true);
