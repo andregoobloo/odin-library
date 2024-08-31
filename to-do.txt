@@ -1,6 +1,2 @@
 
-2. Ability for user to click a button and then books can be ordered by author, title, release year, or number of pages
-
 7. Maybe add a star rating for read books
-
-8. Write number of books per section

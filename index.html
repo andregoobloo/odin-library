@@ -14,8 +14,19 @@
   <body>
     <div class="container">
       <div class="header">
-        <h1>My Library</h1>
-        <button id="new-book-dialog">Add book</button>
+        <h1 class="page-title">My Library</h1>
+        <div>
+          <button id="new-book-dialog">Add Book</button>
+        </div>
+        <div>
+          <h3 class="sort-by-title">Sort By</h3>
+        </div>
+        <div class="sort-btns">
+          <button class="title-sort">Title</button>
+          <button class="author-sort">Author</button>
+          <button class="page-sort">Pages</button>
+          <button class="year-sort">Year</button>
+        </div>
       </div>
       <div class="library-not-read-div">
         <h1 class="unread-title">Not Read</h1>
@@ -29,6 +40,9 @@
         <i class="close-dialog material-symbols-outlined">close</i>
 
         <form class="new-book-form" method="dialog">
+          <div>
+            <h1 class="form-title">New Book</h1>
+          </div>
           <div>
             <label for="title">Title</label>
             <input

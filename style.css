@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap");
+
 :root {
   --main-color: #64748b;
   --secondary-color: #cbd5e1;
-  --third-color: #475569;
+  --third-color: #334155;
 }
 
 * {
@@ -11,28 +13,44 @@
 
 body {
   box-sizing: border-box;
+  background-color: var(--secondary-color);
+  font-family: "Baskervville SC", sans-serif;
 }
 
 .container {
   height: 100vh;
   width: auto;
   display: grid;
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: 2fr 8fr;
   grid-template-columns: 1fr 1fr;
+  gap: 2em;
 }
 
 .header {
   text-align: center;
-  background-color: var(--secondary-color);
   grid-area: 1/1/2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 4rem;
+  color: var(--third-color);
+}
+
+.sort-by-title {
+  color: var(--third-color);
 }
 
 .library-read-div {
   background-color: var(--main-color);
   grid-area: 2/2/3/3;
+  border-radius: 20px;
 }
 
-.library-read {
+.library-read,
+.library-not-read {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -40,51 +58,53 @@ body {
 }
 
 .library-not-read-div {
-  background-color: var(--third-color);
+  background-color: var(--main-color);
   grid-area: 2/1/3/2;
-}
-
-.library-not-read {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.header h1 {
-  text-align: center;
+  border-radius: 20px;
 }
 
 .book-card {
+  font-size: 0.8rem;
   background-color: var(--secondary-color);
   border: 1px solid black;
   width: 250px;
   height: 300px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
   border-radius: 10px;
   border: 1px solid #333;
   box-shadow: 10px 0 5px -2px var(--third-color);
 }
 
-.book-title {
-  text-align: center;
+.book-card > div {
+  padding: 10px;
 }
 
-.book-author,
-.book-release-year,
-.book-page-count,
-.book-read-status {
-  font-size: 1.2rem;
+.book-title-div {
+  text-align: center;
+  padding-bottom: 0px;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-bottom: 1px solid var(--main-color);
+  font-size: 0.9rem;
+}
+
+.book-info-div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1rem;
+}
+
+.book-btn-div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .delete-book-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   cursor: pointer;
-  margin-top: auto;
-  align-self: flex-end;
+  transition: 0.2s;
 }
 .delete-book-btn:hover {
   color: rgb(205, 6, 6);
@@ -112,12 +132,32 @@ body {
 .unread-title {
   color: white;
   text-align: center;
+  padding-bottom: 20px;
 }
 
+.sort-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-btns button,
+#new-book-dialog,
 .change-read-status {
+  border-radius: 20px;
+  padding: 5px 10px;
   cursor: pointer;
+  border: none;
+  transition: 0.4s;
+  font-family: "Baskervville SC", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
+.sort-btns button:hover,
+#new-book-dialog:hover,
 .change-read-status:hover {
-  color: var(--third-color);
+  background-color: var(--main-color);
+  color: var(--secondary-color);
 }
